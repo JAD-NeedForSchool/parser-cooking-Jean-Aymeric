@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using ParserCookingRecipe.ingredient;
+using ParserCookingRecipe.ingredient.basic;
 using ParserCookingRecipe.interpreter;
 using ParserCookingRecipe.operation.simple;
 
@@ -15,7 +16,11 @@ namespace ParserCookingRecipe.parser
 
         public override CookingOrder? Handle(RecipeTree recipe)
         {
-            throw new NotImplementedException();
+            if (recipe.GetNbSubRecipes() == 0) {
+                return new IngredientCookingOrder(new BasicIngredient(recipe.Token));
+            }
+            if (this.Next == null) { throw new Exception("No Next token"); }
+            return this.Next.Handle(recipe);
         }
     }
 }

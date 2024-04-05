@@ -9,5 +9,10 @@
         {
             this.SubRecipeTrees.Add(RecipeTree);
         }
+
+        internal int GetNbSubRecipes()
+        {
+            return this.SubRecipeTrees.Count;
+        }
     }
 }
