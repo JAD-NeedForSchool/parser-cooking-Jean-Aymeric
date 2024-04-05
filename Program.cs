@@ -3,6 +3,7 @@ using ParserCookingRecipe.ingredient.complex;
 using ParserCookingRecipe.interpreter;
 using ParserCookingRecipe.operation.complex;
 using ParserCookingRecipe.operation.simple;
+using ParserCookingRecipe.parser;
 
 CookingOrder TakeYellowOrder = new SimpleOperationCookingOrder(new SimpleOperation("PrendreJaune"), new IngredientCookingOrder(new BasicIngredient("Oeuf")));
 CookingRecipeOrder context = new CookingRecipeOrder();
@@ -25,6 +26,7 @@ CookingRecipeOrder MayonnaiseOrder = new CookingRecipeOrder();
 
 MayonnaiseRecipe.Interprete(MayonnaiseOrder);
 
-Console.WriteLine(MayonnaiseOrder.Ingredient.Name);
+RecipeTree recipeTree = CookingRecipeParser.TextToTree(MayonnaiseOrder.Ingredient.Name);
 
+Console.WriteLine(MayonnaiseOrder.Ingredient.Name);
 //ComplexIngredient mayonnaise = new ComplexIngredient("Touiller(Ajouter(Mélanger(PrendreJaune(Oeuf) Moutarde Vinaigre ) Huile ))")
