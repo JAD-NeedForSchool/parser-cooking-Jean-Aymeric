@@ -16,6 +16,17 @@ namespace ParserCookingRecipe.parser
 
         public bool HasNext() { return Next != null; }
 
-        public abstract CookingOrder? Handle(RecipeTree recipe);
-     }
+        public abstract CookingOrder Handle(RecipeTree recipe);
+        protected void AddNext(CookingRecipeTokenHandler next)
+        {
+            if (this.Next == null)
+            {
+                this.Next = next;
+            }
+            else
+            {
+                this.Next.AddNext(next);
+            }
+        }
+    }
 }

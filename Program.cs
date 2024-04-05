@@ -24,9 +24,9 @@ CookingOrder MayonnaiseRecipe = new SimpleOperationCookingOrder(new SimpleOperat
 
 CookingRecipeOrder MayonnaiseOrder = new CookingRecipeOrder();
 
-MayonnaiseRecipe.Interprete(MayonnaiseOrder);
 
-RecipeTree recipeTree = CookingRecipeParser.TextToTree("Touiller(Ajouter(Mélanger(PrendreJaune(Oeuf) Moutarde Vinaigre) Huile))");
 
+CookingOrder MayonnaiseRecipe2 = CookingRecipeParser.Parse("Touiller(Ajouter(Mélanger(PrendreJaune(Oeuf) Moutarde Vinaigre) Huile))");
+MayonnaiseRecipe2.Interprete(MayonnaiseOrder);
 Console.WriteLine(MayonnaiseOrder.Ingredient.Name);
-//ComplexIngredient mayonnaise = new ComplexIngredient("Touiller(Ajouter(Mélanger(PrendreJaune(Oeuf) Moutarde Vinaigre) Huile))")
+

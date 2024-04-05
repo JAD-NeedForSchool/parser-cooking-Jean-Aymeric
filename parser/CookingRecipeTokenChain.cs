@@ -9,17 +9,22 @@ namespace ParserCookingRecipe.parser
 {
     internal class CookingRecipeTokenChain : CookingRecipeTokenHandler
     {
-        public CookingRecipeTokenChain() : base("START") { }
+        private CookingRecipeTokenChain() : base("Start") {
+            this.AddNext(new IngredientCookingOrderHandler("Ingredient"));
+            this.AddNext(new SimpleOperationCookingOrderHandler("SimpleOperation"));
+            this.AddNext(new NaryOperationCookingOrderHandler("NaryOperation"));
+            this.AddNext(new ErrorCookingOrderHandler("Error"));
+        }
 
         public static CookingRecipeTokenChain Instance { get; } = new CookingRecipeTokenChain();
 
-        public override CookingOrder? Handle(RecipeTree recipe)
+        public override CookingOrder Handle(RecipeTree recipe)
         {
             if (this.Next != null)
             {
                 return this.Next.Handle(recipe);
             }
-            return null;
+            throw new InvalidOperationException();
         }
     }
 }

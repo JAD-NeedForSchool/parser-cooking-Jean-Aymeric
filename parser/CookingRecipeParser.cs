@@ -14,10 +14,10 @@ namespace ParserCookingRecipe.parser
         private const char SeparatorCharacter = ' ';
 
         public static CookingOrder Parse(String recipeText) {
-            throw new NotImplementedException();
+            return CookingRecipeParser.TreeToOrder(CookingRecipeParser.TextToTree(recipeText));
         }
 
-        public static RecipeTree TextToTree(String recipeText) {
+        internal static RecipeTree TextToTree(String recipeText) {
             RecipeTree Root = new RecipeTree("");
             int OpenCount = 0;
             int CloseCount = 0;
@@ -47,8 +47,8 @@ namespace ParserCookingRecipe.parser
             return Root;
         }
 
-        public static CookingOrder TreeToOrder(RecipeTree recipeTree) {
-            throw new NotImplementedException();
+        internal static CookingOrder TreeToOrder(RecipeTree recipeTree) {
+            return CookingRecipeTokenChain.Instance.Handle(recipeTree);
         }
     }
 }

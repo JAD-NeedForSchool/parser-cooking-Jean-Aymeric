@@ -10,11 +10,9 @@ using ParserCookingRecipe.operation.simple;
 
 namespace ParserCookingRecipe.parser
 {
-    internal class IngredientCookingOrderHandler(string Token, Ingredient Ingredient) : CookingRecipeTokenHandler(Token)
+    internal class IngredientCookingOrderHandler(string Token) : CookingRecipeTokenHandler(Token)
     {
-        public Ingredient Ingredient { get; set; } = Ingredient;
-
-        public override CookingOrder? Handle(RecipeTree recipe)
+        public override CookingOrder Handle(RecipeTree recipe)
         {
             if (recipe.GetNbSubRecipes() == 0) {
                 return new IngredientCookingOrder(new BasicIngredient(recipe.Token));
