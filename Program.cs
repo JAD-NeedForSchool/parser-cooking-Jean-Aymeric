@@ -1,4 +1,5 @@
 ﻿using ParserCookingRecipe.ingredient.basic;
+using ParserCookingRecipe.ingredient.complex;
 using ParserCookingRecipe.interpreter;
 using ParserCookingRecipe.operation.complex;
 using ParserCookingRecipe.operation.simple;
@@ -25,3 +26,5 @@ CookingRecipeOrder MayonnaiseOrder = new CookingRecipeOrder();
 MayonnaiseRecipe.Interprete(MayonnaiseOrder);
 
 Console.WriteLine(MayonnaiseOrder.Ingredient.Name);
+
+//ComplexIngredient mayonnaise = new ComplexIngredient("Touiller(Ajouter(Mélanger(PrendreJaune(Oeuf) Moutarde Vinaigre ) Huile ))")
